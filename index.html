@@ -324,6 +324,29 @@
       .warn b { display: block; margin-bottom: 2px; }
       .warn p { margin: 0; }
 
+      /* ---------- Ad slot (Adsterra banner) ---------- */
+      .ad-slot-wrap { margin-top: 22px; }
+      .ad-slot-label {
+        display: block;
+        text-align: center;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+      .ad-slot-box {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 6px;
+        min-height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
       footer {
         margin-top: 28px;
         text-align: center;
@@ -404,6 +427,15 @@
           </div>
         </div>
       </section>
+
+      <!-- Adsterra banner ad (same account as weatherradarusa.online) -->
+      <div class="ad-slot-wrap" aria-label="Sponsored Advertisement">
+        <span class="ad-slot-label">Sponsored Advertisement</span>
+        <div class="ad-slot-box">
+          <div id="container-3b6f409a46a74a66ee65f44221bce59b"></div>
+          <script async="async" data-cfasync="false" src="https://bauval.org/21/3b6f409a46a74a66ee65f44221bce59b"></script>
+        </div>
+      </div>
 
       <!-- Steps -->
       <section class="steps" aria-labelledby="steps-title">
