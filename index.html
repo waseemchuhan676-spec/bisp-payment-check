@@ -349,6 +349,9 @@
 
       .footnav { margin: 0 0 10px; }
       .footnav a { color: var(--green-dark); font-weight: 600; }
+      .pagenav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 16px; }
+      .pagenav a { font-size: 0.9rem; font-weight: 700; color: var(--green-dark); text-decoration: none; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 8px 14px; }
+      .pagenav a[aria-current="page"] { background: var(--green); color: #ffffff; border-color: var(--green); }
 
       footer {
         margin-top: 28px;
@@ -372,6 +375,17 @@
         <h1>BISP Payment Check <span class="code">8171</span></h1>
         <p class="sub">Enter your CNIC number and check your Benazir Kafaalat payment information through the official <b>8171</b> service.</p>
       </header>
+
+      <nav class="pagenav" aria-label="Pages">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="how-to-check-survey.html">Survey Check</a>
+        <a href="taleemi-wazaif.html">Taleemi Wazaif</a>
+        <a href="next-survey.html">Next Survey</a>
+        <a href="enter-survey-info.html">Survey Info</a>
+        <a href="info.html">Info</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </nav>
 
       <!-- CNIC check card -->
       <section class="card" aria-labelledby="form-title">
