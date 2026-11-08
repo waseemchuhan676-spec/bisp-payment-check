@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ur">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="description" content="BISP 8171 payment check — apna CNIC number likh kar 8171 par SMS ya official portal se apni Benazir Kafaalat payment ki maloomat hasil karein." />
+    <meta name="description" content="BISP 8171 payment check — enter your CNIC number and get your Benazir Kafaalat payment information through the 8171 SMS service or the official portal." />
     <link rel="icon" href="data:," />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -370,14 +370,14 @@
         <p class="urdu-name" lang="ur" dir="rtl">بینظیر انکم سپورٹ پروگرام</p>
         <p class="en-name">Benazir Income Support Programme</p>
         <h1>BISP Payment Check <span class="code">8171</span></h1>
-        <p class="sub">Apna CNIC number likhein aur apni Benazir Kafaalat payment ki maloomat official <b>8171</b> service se check karein.</p>
+        <p class="sub">Enter your CNIC number and check your Benazir Kafaalat payment information through the official <b>8171</b> service.</p>
       </header>
 
       <!-- CNIC check card -->
       <section class="card" aria-labelledby="form-title">
-        <h2 id="form-title" style="position:absolute;left:-9999px;">CNIC se payment check karein</h2>
+        <h2 id="form-title" style="position:absolute;left:-9999px;">Check your payment with your CNIC</h2>
         <form id="check-form" novalidate>
-          <label for="cnic">Apna CNIC Number Likhein</label>
+          <label for="cnic">Enter Your CNIC Number</label>
           <div class="cnic-row">
             <input
               id="cnic"
@@ -392,41 +392,41 @@
               maxlength="15"
             />
           </div>
-          <p class="hint" id="cnic-hint">13 numbers wala CNIC likhein — misaal: <b>35202-1234567-1</b>. Dash (-) khud lag jayenge.</p>
+          <p class="hint" id="cnic-hint">Enter your 13-digit CNIC — example: <b>35202-1234567-1</b>. Dashes (-) are added automatically.</p>
           <p class="error" id="cnic-error" role="alert"></p>
           <button type="submit" class="btn btn-primary">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-3.8-3.8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-            Payment Check Karein
+            Check Payment
           </button>
           <p class="privacy">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg>
-            <span>Aap ka CNIC is page par save ya kahin send <b>nahi</b> hota. Check sirf aap ke apne phone se 8171 par hota hai.</span>
+            <span>Your CNIC is <b>never</b> saved on this page or sent anywhere. The check is done only from your own phone, through 8171.</span>
           </p>
         </form>
 
         <!-- Actions shown after a valid CNIC -->
         <div class="actions" id="actions" aria-live="polite">
-          <h2>Ab check karein — 2 tareeqe</h2>
-          <p>Aap ka CNIC: <span class="cnic-echo" id="cnic-echo"></span></p>
+          <h2>Check now — 2 ways</h2>
+          <p>Your CNIC: <span class="cnic-echo" id="cnic-echo"></span></p>
 
           <a class="btn btn-primary" id="sms-btn" href="#">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H4l2.3-2.9A8 8 0 1 1 21 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            SMS se Check — 8171 par Bhejein
+            Check by SMS — Send to 8171
           </a>
 
           <a class="btn btn-outline" id="portal-btn" href="https://8171.bisp.gov.pk" target="_blank" rel="noopener">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z" stroke="currentColor" stroke-width="2"/></svg>
-            8171 Portal par Check Karein
+            Check on the 8171 Portal
           </a>
 
           <button type="button" class="btn btn-outline" id="copy-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="2"/></svg>
-            CNIC Copy Karein
+            Copy CNIC
           </button>
-          <p class="copied" id="copied-msg">CNIC copy ho gaya ✓</p>
+          <p class="copied" id="copied-msg">CNIC copied ✓</p>
 
           <div class="desktop-note" id="desktop-note">
-            <b>Computer par hain?</b> Apne mobile se apna CNIC number (bina dash ke) <b>8171</b> par SMS kar dein — jawab SMS mein aa jayega. Ya oopar wala portal button dabayein.
+            <b>On a computer?</b> Send your CNIC number (without dashes) to <b>8171</b> by SMS from your mobile — the reply will come by SMS. Or use the portal button above.
           </div>
         </div>
       </section>
@@ -442,55 +442,55 @@
 
       <!-- Steps -->
       <section class="steps" aria-labelledby="steps-title">
-        <h2 id="steps-title">Check karne ka tareeqa</h2>
+        <h2 id="steps-title">How to check</h2>
         <div class="step">
           <div class="step-num">1</div>
-          <p><b>CNIC number likhein</b><span>Apna 13 numbers wala CNIC oopar wale box mein likhein.</span></p>
+          <p><b>Enter your CNIC number</b><span>Enter your 13-digit CNIC in the box above.</span></p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <p><b>8171 par SMS karein ya portal kholein</b><span>SMS wala button dabane se aap ke phone ki Messages app khul jayegi — bas Send dabana hai.</span></p>
+          <p><b>Send an SMS to 8171 or open the portal</b><span>Tapping the SMS button opens your phone's Messages app — just press Send.</span></p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <p><b>Jawab ka intezar karein</b><span>8171 se SMS jawab mein aap ki ahliyat aur payment ki maloomat aa jayengi.</span></p>
+          <p><b>Wait for the reply</b><span>The reply from 8171 will contain your eligibility and payment information.</span></p>
         </div>
       </section>
 
       <!-- Key info -->
       <section class="info" aria-labelledby="info-title">
-        <h2 id="info-title">Zaroori maloomat</h2>
+        <h2 id="info-title">Important information</h2>
         <div class="info-grid">
           <div class="info-item">
-            <p class="k">Benazir Kafaalat Qist</p>
+            <p class="k">Benazir Kafaalat Installment</p>
             <p class="v">Rs 14,500</p>
-            <p class="d">Registered khawateen ko har teen maah di jane wali qist.</p>
+            <p class="d">The installment paid every three months to registered women.</p>
           </div>
           <div class="info-item">
             <p class="k">BISP Helpline</p>
             <p class="v"><a href="tel:080026477">0800-26477</a></p>
-            <p class="d">Shikayat ya maloomat ke liye muft call karein.</p>
+            <p class="d">Call free for complaints or information.</p>
           </div>
           <div class="info-item">
             <p class="k">Official SMS Code</p>
             <p class="v">8171</p>
-            <p class="d">CNIC sirf isi number par SMS karein — kisi aur number par nahi.</p>
+            <p class="d">Send your CNIC only to this number — never to any other number.</p>
           </div>
           <div class="info-item">
             <p class="k">Official Portal</p>
             <p class="v" style="font-size:1.05rem;"><a href="https://8171.bisp.gov.pk" target="_blank" rel="noopener">8171.bisp.gov.pk</a></p>
-            <p class="d">Online check ke liye sirf yehi official website hai.</p>
+            <p class="d">This is the only official website for checking online.</p>
           </div>
         </div>
         <div class="warn" role="note">
-          <b>Fraud se bachein</b>
-          <p>BISP ki payment bilkul muft hai — check karne ya qist nikalwane ke liye kisi ko koi fees, commission ya apna PIN/OTP na dein. Payment ki khabar sirf <b>8171</b> se aane wale SMS par bharosa karein.</p>
+          <b>Beware of fraud</b>
+          <p>BISP payments are completely free — never pay anyone a fee or commission, and never share your PIN/OTP, to check or withdraw your installment. Trust payment news only from SMS received from <b>8171</b>.</p>
         </div>
       </section>
 
       <footer>
-        <p class="footnav"><a href="how-to-check-survey.html">Survey Check</a> · <a href="info.html">Info</a> · <a href="terms.html">Terms</a> · <a href="privacy-policy.html">Privacy Policy</a></p>
-        <p>Payment ka official jawab sirf <b>8171</b> SMS ya <a href="https://8171.bisp.gov.pk" target="_blank" rel="noopener">8171.bisp.gov.pk</a> portal se milta hai.</p>
+        <p class="footnav"><a href="how-to-check-survey.html">Survey Check</a> · <a href="taleemi-wazaif.html">Taleemi Wazaif</a> · <a href="next-survey.html">Next Survey</a> · <a href="enter-survey-info.html">Survey Info</a> · <a href="info.html">Info</a> · <a href="terms.html">Terms</a> · <a href="privacy-policy.html">Privacy Policy</a></p>
+        <p>The official payment reply comes only from <b>8171</b> SMS or <a href="https://8171.bisp.gov.pk" target="_blank" rel="noopener">8171.bisp.gov.pk</a> portal se milta hai.</p>
       </footer>
 
     </main>
@@ -533,11 +533,11 @@
           e.preventDefault();
           var d = digitsOnly(input.value);
           if (d.length === 0) {
-            showError('Pehle apna CNIC number likhein.');
+            showError('Please enter your CNIC number first.');
             return;
           }
           if (d.length < 13) {
-            showError('CNIC mukammal nahi hai — 13 numbers hone chahiyein. Abhi ' + d.length + ' likhe hain.');
+            showError('Your CNIC is incomplete — it must be 13 digits. You have entered ' + d.length + ' so far.');
             return;
           }
           // Valid: prepare the two official ways to check.
