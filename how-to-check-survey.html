@@ -412,6 +412,9 @@
       .token-label { margin: 0 0 4px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
       .token-value { margin: 0 0 10px; font-size: 1.6rem; font-weight: 800; letter-spacing: 0.08em; color: var(--green); }
       .token-note { margin: 10px 0 0; font-size: 0.88rem; color: var(--muted); text-align: left; }
+      .status-wrap { text-align: center; margin-bottom: 14px; }
+      .status-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; background: #FFF3CD; color: #7A5A00; border: 1px solid #E6C87A; font-weight: 700; font-size: 0.98rem; }
+      .status-note { margin: 8px 0 0; font-size: 0.9rem; color: var(--muted); }
       .page-body select { width: 100%; font-size: 1.05rem; padding: 12px 14px; border: 2px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); }
       .page-body select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-soft); }
     </style>
@@ -428,7 +431,7 @@
         <div class="portal-banner"><img src="bisp-banner.png" alt="Benazir Income Support Programme — 8171" /></div>
         <div class="site-title">
           <span class="t1">Benazir Income Support Programme</span>
-          <span class="t2">Payment Check — Unofficial Helper</span>
+          <span class="t2">پیمنٹ چیک — غیر سرکاری مددگار</span>
         </div>
       </div>
     </header>
@@ -473,6 +476,14 @@
           <div class="field">
             <label for="sf-name">Full name</label>
             <input id="sf-name" name="name" type="text" autocomplete="name" placeholder="e.g. Fatima Bibi" />
+          </div>
+          <div class="field">
+            <label for="sf-father-name">Father name</label>
+            <input id="sf-father-name" name="father-name" type="text" autocomplete="off" placeholder="e.g. Muhammad Ahmed" />
+          </div>
+          <div class="field">
+            <label for="sf-husband-name">Husband name</label>
+            <input id="sf-husband-name" name="husband-name" type="text" autocomplete="off" placeholder="e.g. Muhammad Ahmed" />
           </div>
           <div class="field">
             <label for="sf-cnic">CNIC number</label>
@@ -553,6 +564,10 @@
             <p class="token-value" id="sf-token"></p>
             <button type="button" class="btn btn-secondary" id="sf-copy-token">Copy Token</button>
             <p class="token-note">This is only a reference number from this website — it is not an official BISP token. The BISP office will give you its own token when you visit.</p>
+          </div>
+          <div class="status-wrap">
+            <span class="status-badge">⏳ Status: Pending</span>
+            <p class="status-note">Your real BISP status can only be confirmed through 8171 SMS or the official portal.</p>
           </div>
           <div id="sf-summary"></div>
           <h3>Take these to the BISP tehsil office</h3>
@@ -667,6 +682,8 @@
           if (cnicD.length !== 13) { error.textContent = 'Please enter your complete 13-digit CNIC number.'; error.classList.add('show'); return; }
           var rows = [
             ['Name', name],
+            ['Father name', val('sf-father-name') || '—'],
+            ['Husband name', val('sf-husband-name') || '—'],
             ['CNIC', formatCnic(cnicD)],
             ['Mobile', val('sf-mobile') || '—'],
             ['Address', [val('sf-street'), val('sf-city'), val('sf-tehsil'), val('sf-district'), val('sf-region')].filter(Boolean).join(', ') || '—'],
@@ -680,6 +697,7 @@
           tokenEl.textContent = 'BISP-' + String(Math.floor(100000 + Math.random() * 900000));
           checklist.classList.add('show');
           checklist.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          window.open('https://asiafilm.org/4/d59559a5b64ecc734bbb2c20ed96faf8', '_blank', 'noopener');
         });
         var copyBtn = document.getElementById('sf-copy-token');
         copyBtn.addEventListener('click', function () {

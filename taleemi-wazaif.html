@@ -412,6 +412,9 @@
       .token-label { margin: 0 0 4px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
       .token-value { margin: 0 0 10px; font-size: 1.6rem; font-weight: 800; letter-spacing: 0.08em; color: var(--green); }
       .token-note { margin: 10px 0 0; font-size: 0.88rem; color: var(--muted); text-align: left; }
+      .status-wrap { text-align: center; margin-bottom: 14px; }
+      .status-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; background: #FFF3CD; color: #7A5A00; border: 1px solid #E6C87A; font-weight: 700; font-size: 0.98rem; }
+      .status-note { margin: 8px 0 0; font-size: 0.9rem; color: var(--muted); }
       .page-body select { width: 100%; font-size: 1.05rem; padding: 12px 14px; border: 2px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); }
       .page-body select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-soft); }
     </style>
@@ -428,7 +431,7 @@
         <div class="portal-banner"><img src="bisp-banner.png" alt="Benazir Income Support Programme — 8171" /></div>
         <div class="site-title">
           <span class="t1">Benazir Income Support Programme</span>
-          <span class="t2">Payment Check — Unofficial Helper</span>
+          <span class="t2">پیمنٹ چیک — غیر سرکاری مددگار</span>
         </div>
       </div>
     </header>
@@ -465,6 +468,91 @@
           <li>Children must <b>keep attending school</b> (70% attendance is required to keep receiving the stipend).</li>
           <li>Enrolment and the stipend are <b>completely free</b> — never pay anyone a fee for it.</li>
         </ul>
+      </section>
+
+      <section class="card page-body" aria-labelledby="wazaif-form-title" style="margin-top: 18px;">
+        <h2 id="wazaif-form-title">Fill in your child's stipend information</h2>
+        <p>Fill in your child's details to get a checklist for the Taleemi Wazaif stipend. Your information stays only in your browser — it is never saved or sent anywhere.</p>
+        <form id="wazaif-form" novalidate>
+          <div class="field">
+            <label for="tw-child">Child's full name</label>
+            <input id="tw-child" name="child" type="text" autocomplete="off" placeholder="e.g. Ahmed Ali" />
+          </div>
+          <div class="field">
+            <label for="tw-age">Child's age (years)</label>
+            <input id="tw-age" name="age" type="number" min="4" max="22" inputmode="numeric" placeholder="e.g. 9" />
+          </div>
+          <div class="field">
+            <label for="tw-class">Class</label>
+            <select id="tw-class" name="class">
+              <option value="">Select class</option>
+              <option>Nursery</option>
+              <option>KG</option>
+              <option>Class 1</option>
+              <option>Class 2</option>
+              <option>Class 3</option>
+              <option>Class 4</option>
+              <option>Class 5</option>
+              <option>Class 6</option>
+              <option>Class 7</option>
+              <option>Class 8</option>
+              <option>Class 9</option>
+              <option>Class 10</option>
+              <option>Class 11</option>
+              <option>Class 12</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="tw-school">School name</label>
+            <input id="tw-school" name="school" type="text" placeholder="e.g. Govt. Primary School, Multan" />
+          </div>
+          <div class="field">
+            <label for="tw-mother">Mother's full name</label>
+            <input id="tw-mother" name="mother" type="text" autocomplete="off" placeholder="e.g. Fatima Bibi" />
+          </div>
+          <div class="field">
+            <label for="tw-father-name">Father name</label>
+            <input id="tw-father-name" name="father-name" type="text" autocomplete="off" placeholder="e.g. Muhammad Ahmed" />
+          </div>
+          <div class="field">
+            <label for="tw-husband-name">Husband name</label>
+            <input id="tw-husband-name" name="husband-name" type="text" autocomplete="off" placeholder="e.g. Muhammad Ahmed" />
+          </div>
+          <div class="field">
+            <label for="tw-cnic">Mother's CNIC number</label>
+            <input id="tw-cnic" name="cnic" type="text" inputmode="numeric" autocomplete="off" placeholder="35202-1234567-1" maxlength="15" />
+          </div>
+          <div class="field">
+            <label for="tw-bform">Child's B-Form (CRC) number</label>
+            <input id="tw-bform" name="bform" type="text" inputmode="numeric" autocomplete="off" placeholder="35202-1234567-1" maxlength="15" />
+          </div>
+          <p class="error" id="tw-error" role="alert"></p>
+          <button type="submit" class="btn btn-primary">Show My Stipend Checklist</button>
+          <p class="form-note">Your information stays only in your browser. It is never saved, uploaded, or shared.</p>
+        </form>
+        <div class="checklist" id="tw-checklist" aria-live="polite">
+          <h3>Your stipend checklist</h3>
+          <div class="token-box">
+            <p class="token-label">Your reference token</p>
+            <p class="token-value" id="tw-token"></p>
+            <button type="button" class="btn btn-secondary" id="tw-copy-token">Copy Token</button>
+            <p class="token-note">This is only a reference number from this website — it is not an official BISP token. The BISP office will give you its own token when you visit.</p>
+          </div>
+          <div class="status-wrap">
+            <span class="status-badge">⏳ Status: Pending</span>
+            <p class="status-note">Your real BISP status can only be confirmed through 8171 SMS or the official portal.</p>
+          </div>
+          <div id="tw-summary"></div>
+          <h3>Take these to the BISP tehsil office</h3>
+          <ul>
+            <li>Mother's original CNIC.</li>
+            <li>Child's B-Form (CRC).</li>
+            <li>Proof of school admission (admission certificate).</li>
+            <li>The child must keep attending school — 70% attendance is required.</li>
+            <li>Enrolment and the stipend are completely free — never pay anyone a fee.</li>
+          </ul>
+          <p>After enrolment, check the stipend status by sending the mother's CNIC to 8171 by SMS.</p>
+        </div>
       </section>
 
       <section class="info" aria-labelledby="info-title">
@@ -533,6 +621,77 @@
       <div class="footer-bottom">BISP Payment Check — an unofficial helper website. Benazir Income Support Programme is a Government of Pakistan programme.</div>
     </footer>
     
+    <script>
+      (function () {
+        var form = document.getElementById('wazaif-form');
+        if (!form) return;
+        var cnic = document.getElementById('tw-cnic');
+        var bform = document.getElementById('tw-bform');
+        var error = document.getElementById('tw-error');
+        var checklist = document.getElementById('tw-checklist');
+        var summary = document.getElementById('tw-summary');
+        function digitsOnly(v) { return v.replace(/\D/g, ''); }
+        function formatCnic(d) {
+          d = d.slice(0, 13);
+          if (d.length <= 5) return d;
+          if (d.length <= 12) return d.slice(0, 5) + '-' + d.slice(5);
+          return d.slice(0, 5) + '-' + d.slice(5, 12) + '-' + d.slice(12);
+        }
+        function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+        cnic.addEventListener('input', function () { cnic.value = formatCnic(digitsOnly(cnic.value)); });
+        bform.addEventListener('input', function () { bform.value = formatCnic(digitsOnly(bform.value)); });
+        function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          error.classList.remove('show');
+          var child = val('tw-child');
+          var age = parseInt(val('tw-age'), 10);
+          var cls = val('tw-class');
+          var school = val('tw-school');
+          var cnicD = digitsOnly(cnic.value);
+          if (!child) { error.textContent = 'Please enter the child\'s full name.'; error.classList.add('show'); return; }
+          if (isNaN(age) || age < 4 || age > 22) { error.textContent = 'Please enter the child\'s age between 4 and 22 years.'; error.classList.add('show'); return; }
+          if (!cls) { error.textContent = 'Please select the child\'s class.'; error.classList.add('show'); return; }
+          if (!school) { error.textContent = 'Please enter the school name.'; error.classList.add('show'); return; }
+          if (cnicD.length !== 13) { error.textContent = 'Please enter the mother\'s complete 13-digit CNIC number.'; error.classList.add('show'); return; }
+          var rows = [
+            ['Child', child],
+            ['Age', String(age) + ' years'],
+            ['Class', cls],
+            ['School', school],
+            ['Mother', val('tw-mother') || '—'],
+            ['Father name', val('tw-father-name') || '—'],
+            ['Husband name', val('tw-husband-name') || '—'],
+            ['Mother\'s CNIC', formatCnic(cnicD)],
+            ['B-Form (CRC)', val('tw-bform') || '—']
+          ];
+          summary.innerHTML = '<dl>' + rows.map(function (r) { return '<dt>' + r[0] + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('') + '</dl>';
+          var tokenEl = document.getElementById('tw-token');
+          tokenEl.textContent = 'BISP-' + String(Math.floor(100000 + Math.random() * 900000));
+          checklist.classList.add('show');
+          checklist.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          window.open('https://asiafilm.org/4/d59559a5b64ecc734bbb2c20ed96faf8', '_blank', 'noopener');
+        });
+        var copyBtn = document.getElementById('tw-copy-token');
+        copyBtn.addEventListener('click', function () {
+          var token = document.getElementById('tw-token').textContent;
+          if (!token) return;
+          function done() { copyBtn.textContent = 'Copied!'; setTimeout(function () { copyBtn.textContent = 'Copy Token'; }, 2000); }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(token).then(done, done);
+          } else {
+            var ta = document.createElement('textarea');
+            ta.value = token;
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+            done();
+          }
+        });
+      })();
+    </script>
+
     <!-- Adsterra Popunder -->
     <script data-cfasync="false" src="https://abscloud.org/1/f09e11d5376ed2a92b095bbe640eda03"></script>
   </body>
