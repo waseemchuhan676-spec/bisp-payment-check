@@ -349,6 +349,16 @@
 
       .footnav { margin: 0 0 10px; }
       .footnav a { color: var(--green-dark); font-weight: 600; }
+      .pagenav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 16px; }
+      .pagenav a { font-size: 0.9rem; font-weight: 700; color: var(--green-dark); text-decoration: none; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 8px 14px; }
+      .pagenav a[aria-current="page"] { background: var(--green); color: #ffffff; border-color: var(--green); }
+      /* ---------- Hero quick links ---------- */
+      .hero-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px; }
+      .hero-link { display: flex; flex-direction: column; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 6px 12px; text-decoration: none; color: var(--ink); font-size: 0.85rem; font-weight: 700; text-align: center; box-shadow: var(--shadow); }
+      .hero-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--green-soft); color: var(--green-dark); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+      .hero-icon svg { width: 24px; height: 24px; }
+      @media (max-width: 520px) { .hero-links { grid-template-columns: repeat(3, 1fr); } }
+      @media (max-width: 380px) { .hero-links { grid-template-columns: repeat(2, 1fr); } }
 
       footer {
         margin-top: 28px;
@@ -389,9 +399,6 @@
         <a href="how-to-check-survey.html">Survey Check</a>
         <a href="taleemi-wazaif.html">Taleemi Wazaif</a>
         <a href="next-survey.html" aria-current="page">Next Survey</a>
-        <a href="enter-survey-info.html">Survey Info</a>
-        <a href="info.html">Info</a>
-        <a href="terms.html">Terms</a>
         <a href="privacy-policy.html">Privacy Policy</a>
       </nav>
 
@@ -459,7 +466,7 @@
       </div>
 
       <footer>
-        <p class="footnav"><a href="how-to-check-survey.html">Survey Check</a> · <a href="taleemi-wazaif.html">Taleemi Wazaif</a> · <a href="next-survey.html">Next Survey</a> · <a href="enter-survey-info.html">Survey Info</a> · <a href="info.html">Info</a> · <a href="terms.html">Terms</a> · <a href="privacy-policy.html">Privacy Policy</a></p>
+        <p class="footnav"><a href="how-to-check-survey.html">Survey Check</a> · <a href="taleemi-wazaif.html">Taleemi Wazaif</a> · <a href="next-survey.html">Next Survey</a> · <a href="privacy-policy.html">Privacy Policy</a></p>
         <p>The official payment reply comes only from <b>8171</b> SMS or <a href="https://8171.bisp.gov.pk" target="_blank" rel="noopener">8171.bisp.gov.pk</a> portal se milta hai.</p>
       </footer>
 
