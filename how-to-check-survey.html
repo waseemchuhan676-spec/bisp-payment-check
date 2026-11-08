@@ -408,6 +408,10 @@
       .checklist dt { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
       .checklist dd { margin: 0 0 8px; }
       .checklist ul { padding-inline-start: 22px; margin: 8px 0; }
+      .token-box { margin: 0 0 14px; padding: 16px; border: 2px dashed var(--green); border-radius: 10px; background: var(--green-soft); text-align: center; }
+      .token-label { margin: 0 0 4px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+      .token-value { margin: 0 0 10px; font-size: 1.6rem; font-weight: 800; letter-spacing: 0.08em; color: var(--green); }
+      .token-note { margin: 10px 0 0; font-size: 0.88rem; color: var(--muted); text-align: left; }
       .page-body select { width: 100%; font-size: 1.05rem; padding: 12px 14px; border: 2px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); }
       .page-body select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-soft); }
     </style>
@@ -544,6 +548,12 @@
         </form>
         <div class="checklist" id="sf-checklist" aria-live="polite">
           <h3>Your survey checklist</h3>
+          <div class="token-box">
+            <p class="token-label">Your reference token</p>
+            <p class="token-value" id="sf-token"></p>
+            <button type="button" class="btn btn-secondary" id="sf-copy-token">Copy Token</button>
+            <p class="token-note">This is only a reference number from this website — it is not an official BISP token. The BISP office will give you its own token when you visit.</p>
+          </div>
           <div id="sf-summary"></div>
           <h3>Take these to the BISP tehsil office</h3>
           <ul>
@@ -666,8 +676,27 @@
             ['Survey situation', val('sf-situation') || '—']
           ];
           summary.innerHTML = '<dl>' + rows.map(function (r) { return '<dt>' + r[0] + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('') + '</dl>';
+          var tokenEl = document.getElementById('sf-token');
+          tokenEl.textContent = 'BISP-' + String(Math.floor(100000 + Math.random() * 900000));
           checklist.classList.add('show');
           checklist.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+        var copyBtn = document.getElementById('sf-copy-token');
+        copyBtn.addEventListener('click', function () {
+          var token = document.getElementById('sf-token').textContent;
+          if (!token) return;
+          function done() { copyBtn.textContent = 'Copied!'; setTimeout(function () { copyBtn.textContent = 'Copy Token'; }, 2000); }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(token).then(done, done);
+          } else {
+            var ta = document.createElement('textarea');
+            ta.value = token;
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+            done();
+          }
         });
       })();
     </script>
