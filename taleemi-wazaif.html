@@ -397,7 +397,17 @@
       .page-body ol, .page-body ul { padding-inline-start: 22px; margin: 8px 0; }
       .page-body li + li { margin-top: 6px; }
       .page-body .btn { margin-top: 14px; }
-      .page-body label { display: block; font-weight: 700; font-size: 1.02rem; margin: 14px 0 4px; }
+      .page-body .field { margin-bottom: 12px; }
+      .page-body input[type="text"], .page-body input[type="tel"], .page-body input[type="number"] { width: 100%; font-size: 1.05rem; padding: 12px 14px; border: 2px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); }
+      .page-body input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-soft); }
+      .page-body .form-note { margin: 12px 0 0; font-size: 0.88rem; color: var(--muted); }
+      .checklist { display: none; margin-top: 18px; border-top: 1px dashed var(--line); padding-top: 18px; }
+      .checklist.show { display: block; }
+      .checklist h3 { font-size: 1.05rem; margin: 0 0 8px; }
+      .checklist dl { margin: 0 0 12px; }
+      .checklist dt { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+      .checklist dd { margin: 0 0 8px; }
+      .checklist ul { padding-inline-start: 22px; margin: 8px 0; }
       .page-body select { width: 100%; font-size: 1.05rem; padding: 12px 14px; border: 2px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); }
       .page-body select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-soft); }
     </style>

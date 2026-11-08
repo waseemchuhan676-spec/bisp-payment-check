@@ -397,7 +397,17 @@
       .page-body ol, .page-body ul { padding-inline-start: 22px; margin: 8px 0; }
       .page-body li + li { margin-top: 6px; }
       .page-body .btn { margin-top: 14px; }
-      .page-body label { display: block; font-weight: 700; font-size: 1.02rem; margin: 14px 0 4px; }
+      .page-body .field { margin-bottom: 12px; }
+      .page-body input[type="text"], .page-body input[type="tel"], .page-body input[type="number"] { width: 100%; font-size: 1.05rem; padding: 12px 14px; border: 2px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); }
+      .page-body input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-soft); }
+      .page-body .form-note { margin: 12px 0 0; font-size: 0.88rem; color: var(--muted); }
+      .checklist { display: none; margin-top: 18px; border-top: 1px dashed var(--line); padding-top: 18px; }
+      .checklist.show { display: block; }
+      .checklist h3 { font-size: 1.05rem; margin: 0 0 8px; }
+      .checklist dl { margin: 0 0 12px; }
+      .checklist dt { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+      .checklist dd { margin: 0 0 8px; }
+      .checklist ul { padding-inline-start: 22px; margin: 8px 0; }
       .page-body select { width: 100%; font-size: 1.05rem; padding: 12px 14px; border: 2px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); }
       .page-body select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-soft); }
     </style>
@@ -450,6 +460,101 @@
           <li>The survey and registration are <b>completely free</b> — do not pay anyone any fee, commission, or "fast-track" charges.</li>
           <li>After the survey, BISP decides eligibility — this website cannot survey or register you.</li>
         </ul>
+      </section>
+
+      <section class="card page-body" aria-labelledby="survey-form-title" style="margin-top: 18px;">
+        <h2 id="survey-form-title">Fill in your survey information</h2>
+        <p>Fill in your details to get a checklist of what to take to the BISP office for your survey. Your information stays only in your browser — it is never saved or sent anywhere.</p>
+        <form id="survey-form" novalidate>
+          <div class="field">
+            <label for="sf-name">Full name</label>
+            <input id="sf-name" name="name" type="text" autocomplete="name" placeholder="e.g. Fatima Bibi" />
+          </div>
+          <div class="field">
+            <label for="sf-cnic">CNIC number</label>
+            <input id="sf-cnic" name="cnic" type="text" inputmode="numeric" autocomplete="off" placeholder="35202-1234567-1" maxlength="15" />
+          </div>
+          <div class="field">
+            <label for="sf-mobile">Mobile number</label>
+            <input id="sf-mobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel" placeholder="0300-1234567" maxlength="12" />
+          </div>
+          <div class="field">
+            <label for="sf-street">Street / house address</label>
+            <input id="sf-street" name="street" type="text" placeholder="House / street / mohalla" />
+          </div>
+          <div class="field">
+            <label for="sf-city">City / town</label>
+            <input id="sf-city" name="city" type="text" placeholder="e.g. Multan" />
+          </div>
+          <div class="field">
+            <label for="sf-tehsil">Tehsil</label>
+            <input id="sf-tehsil" name="tehsil" type="text" placeholder="e.g. Multan City" />
+          </div>
+          <div class="field">
+            <label for="sf-district">District</label>
+            <input id="sf-district" name="district" type="text" placeholder="e.g. Multan" />
+          </div>
+          <div class="field">
+            <label for="sf-region">Province / region</label>
+            <select id="sf-region" name="region">
+              <option value="">Select province / region</option>
+              <option>Punjab</option>
+              <option>Sindh</option>
+              <option>Khyber Pakhtunkhwa</option>
+              <option>Balochistan</option>
+              <option>Gilgit-Baltistan</option>
+              <option>Azad Jammu &amp; Kashmir</option>
+              <option>Islamabad (ICT)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="sf-family">Family members (total)</label>
+            <input id="sf-family" name="family" type="number" min="1" max="30" inputmode="numeric" placeholder="e.g. 6" />
+          </div>
+          <div class="field">
+            <label for="sf-children">Children under 18</label>
+            <input id="sf-children" name="children" type="number" min="0" max="20" inputmode="numeric" placeholder="e.g. 3" />
+          </div>
+          <div class="field">
+            <label for="sf-bill">Utility bill</label>
+            <select id="sf-bill" name="bill">
+              <option value="">Select utility bill</option>
+              <option>Electricity</option>
+              <option>Gas</option>
+              <option>Water</option>
+              <option>No bill available</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="sf-billref">Utility bill reference number</label>
+            <input id="sf-billref" name="billref" type="text" placeholder="Bill reference / consumer number" />
+          </div>
+          <div class="field">
+            <label for="sf-situation">Survey situation</label>
+            <select id="sf-situation" name="situation">
+              <option value="">Select your situation</option>
+              <option>Never surveyed before</option>
+              <option>Surveyed before — want to check status</option>
+              <option>Re-survey required</option>
+            </select>
+          </div>
+          <p class="error" id="sf-error" role="alert"></p>
+          <button type="submit" class="btn btn-primary">Show My Survey Checklist</button>
+          <p class="form-note">Your information stays only in your browser. It is never saved, uploaded, or shared.</p>
+        </form>
+        <div class="checklist" id="sf-checklist" aria-live="polite">
+          <h3>Your survey checklist</h3>
+          <div id="sf-summary"></div>
+          <h3>Take these to the BISP tehsil office</h3>
+          <ul>
+            <li>Your original CNIC.</li>
+            <li>Your mobile phone (the number you registered).</li>
+            <li>Your utility bill (electricity, gas, or water) if you have one.</li>
+            <li>Children's B-Forms (CRC) for Taleemi Wazaif enrolment.</li>
+            <li>Do not pay anyone any fee — the survey is completely free.</li>
+          </ul>
+          <p>After the survey, wait for the 8171 SMS about eligibility. Do not trust a message from any other number.</p>
+        </div>
       </section>
 
       <section class="info" aria-labelledby="info-title">
@@ -518,7 +623,55 @@
       <div class="footer-bottom">BISP Payment Check — an unofficial helper website. Benazir Income Support Programme is a Government of Pakistan programme.</div>
     </footer>
     
-    <!-- Adsterra Popunder -->
-    <script data-cfasync="false" src="https://abscloud.org/1/f09e11d5376ed2a92b095bbe640eda03"></script>
+    <script>
+      (function () {
+        var form = document.getElementById('survey-form');
+        if (!form) return;
+        var cnic = document.getElementById('sf-cnic');
+        var mobile = document.getElementById('sf-mobile');
+        var error = document.getElementById('sf-error');
+        var checklist = document.getElementById('sf-checklist');
+        var summary = document.getElementById('sf-summary');
+        function digitsOnly(v) { return v.replace(/\D/g, ''); }
+        function formatCnic(d) {
+          d = d.slice(0, 13);
+          if (d.length <= 5) return d;
+          if (d.length <= 12) return d.slice(0, 5) + '-' + d.slice(5);
+          return d.slice(0, 5) + '-' + d.slice(5, 12) + '-' + d.slice(12);
+        }
+        function formatMobile(d) {
+          d = d.slice(0, 11);
+          if (d.length <= 4) return d;
+          return d.slice(0, 4) + '-' + d.slice(4);
+        }
+        function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+        cnic.addEventListener('input', function () { cnic.value = formatCnic(digitsOnly(cnic.value)); });
+        mobile.addEventListener('input', function () { mobile.value = formatMobile(digitsOnly(mobile.value)); });
+        function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          error.classList.remove('show');
+          var name = val('sf-name');
+          var cnicD = digitsOnly(cnic.value);
+          if (!name) { error.textContent = 'Please enter your full name.'; error.classList.add('show'); return; }
+          if (cnicD.length !== 13) { error.textContent = 'Please enter your complete 13-digit CNIC number.'; error.classList.add('show'); return; }
+          var rows = [
+            ['Name', name],
+            ['CNIC', formatCnic(cnicD)],
+            ['Mobile', val('sf-mobile') || '—'],
+            ['Address', [val('sf-street'), val('sf-city'), val('sf-tehsil'), val('sf-district'), val('sf-region')].filter(Boolean).join(', ') || '—'],
+            ['Family members', val('sf-family') || '—'],
+            ['Children under 18', val('sf-children') || '—'],
+            ['Utility bill', [val('sf-bill'), val('sf-billref')].filter(Boolean).join(' — ') || '—'],
+            ['Survey situation', val('sf-situation') || '—']
+          ];
+          summary.innerHTML = '<dl>' + rows.map(function (r) { return '<dt>' + r[0] + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('') + '</dl>';
+          checklist.classList.add('show');
+          checklist.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      })();
+    </script>
+
+
   </body>
 </html>
